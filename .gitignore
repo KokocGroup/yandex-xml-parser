@@ -1,2 +1,4 @@
 *.pyc
 .idea
+yandex_xml_parser.egg-info*
+dist*
