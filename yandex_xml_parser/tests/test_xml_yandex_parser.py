@@ -12,16 +12,16 @@ class GoogleParserTestCase(YandexXmlParserTests):
         u""""
             Проверка ничего не найдено
         """
-        html = self.get_data('not-found.xml')
-        y = YandexXmlParser(html)
+        xml = self.get_data('not-found.xml')
+        y = YandexXmlParser(xml)
         self.assertTrue(y.is_not_found())
 
     def test2(self):
         u""""
             Ищем кол-во страниц
         """
-        html = self.get_data('2015-10-21.xml')
-        y = YandexXmlParser(html)
+        xml = self.get_data('2015-10-21.xml')
+        y = YandexXmlParser(xml)
         pc = y.get_pagecount()
         self.assertEqual(pc, 102206784)
 
@@ -29,8 +29,8 @@ class GoogleParserTestCase(YandexXmlParserTests):
         u""""
             Ищем сниппеты
         """
-        html = self.get_data('error33.xml')
-        y = YandexXmlParser(html)
+        xml = self.get_data('error33.xml')
+        y = YandexXmlParser(xml)
         serp = y.get_serp()
         self.assertEqual(serp['error']['code'], 33)
 
@@ -38,8 +38,8 @@ class GoogleParserTestCase(YandexXmlParserTests):
         u""""
             Ищем сниппеты
         """
-        html = self.get_data('2015-10-21.xml')
-        y = YandexXmlParser(html)
+        xml = self.get_data('2015-10-21.xml')
+        y = YandexXmlParser(xml)
         serp = y.get_serp()
         self.assertEqual(serp['pc'], 102206784)
         self.assertEqual(len(serp['sn']), 10)
@@ -60,8 +60,8 @@ class GoogleParserTestCase(YandexXmlParserTests):
         u""""
             Ищем сниппеты
         """
-        html = self.get_data('2015-10-22.xml')
-        y = YandexXmlParser(html)
+        xml = self.get_data('2015-10-22.xml')
+        y = YandexXmlParser(xml)
         serp = y.get_serp()
         self.assertEqual(serp['pc'], 18166460)
         self.assertEqual(len(serp['sn']), 10)
@@ -82,8 +82,8 @@ class GoogleParserTestCase(YandexXmlParserTests):
         u""""
             Ищем сниппеты
         """
-        html = self.get_data('error32.xml')
-        y = YandexXmlParser(html)
+        xml = self.get_data('error32.xml')
+        y = YandexXmlParser(xml)
         serp = y.get_serp()
         self.assertEqual(serp['error']['code'], 32)
 

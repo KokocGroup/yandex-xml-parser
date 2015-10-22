@@ -9,5 +9,5 @@ Yandex.XML parser
  - parse number indexed pages
 
 ## Example:
-   y = YandexXmlParser(html)
-   serp = y.get_serp()
+    y = YandexXmlParser(xml)
+    serp = y.get_serp()
