@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<yandexsearch version="1.0">
+  <response date="20151021T153024">
+    <error code="33">
+      Запрос пришёл с IP-адреса 46.161.16.211, не входящего в список разрешённых для данного пользователя
+    </error>
+  </response>
+</yandexsearch>

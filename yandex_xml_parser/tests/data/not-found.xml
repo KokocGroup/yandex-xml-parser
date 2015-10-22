@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<yandexsearch version="1.0"><request><query>butablesdfsdf</query><page>0</page><sortby order="descending" priority="no">rlv</sortby><maxpassages>1</maxpassages><groupings><groupby attr="d" mode="deep" groups-on-page="50" docs-in-group="1" curcateg="-1" /></groupings></request><response date="20151021T141827"><error code="15">Искомая комбинация слов нигде не встречается</error></response></yandexsearch>
