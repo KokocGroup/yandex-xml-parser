@@ -109,6 +109,34 @@ class GoogleParserTestCase(YandexXmlParserTests):
         self.assertEqual(serp['sn'][49]['t'], u'<hlword>Купить</hlword> кухонную <hlword>столешницу</hlword> из дерева на заказ - <hlword>Москва</hlword>')
         self.assertEqual(serp['sn'][49]['s'], u'Так как производство расположено в <hlword>Москве</hlword>, то <hlword>купить</hlword> у нас <hlword>столешницу</hlword> достаточно просто.')
 
+    def test8(self):
+        u""""
+            Ищем сниппеты
+        """
+        xml = self.get_data('2015-10-22.2.xml')
+        y = YandexXmlParser(xml)
+        serp = y.get_serp()
+        self.assertEqual(serp['pc'], 381859)
+        self.assertEqual(len(serp['sn']), 50)
+
+        self.assertEqual(serp['sn'][0]['p'], 1)
+        self.assertEqual(serp['sn'][0]['d'], 'www.avito.ru')
+        self.assertEqual(serp['sn'][0]['u'], 'https://www.avito.ru/moskva/avtomobili/audi/tt')
+        self.assertEqual(serp['sn'][0]['t'], u'<hlword>Купить</hlword> <hlword>Audi</hlword> <hlword>TT</hlword> – <hlword>продажа</hlword> подержанных и новых автомобилей...')
+        self.assertEqual(serp['sn'][0]['s'], u'<hlword>Продажа</hlword> новых или б/у авто <hlword>Audi</hlword> <hlword>TT</hlword> – частные объявления о продаже новых и авто с пробегом.')
+
+        self.assertEqual(serp['sn'][14]['p'], 15)
+        self.assertEqual(serp['sn'][14]['d'], 'www.cars.ru')
+        self.assertEqual(serp['sn'][14]['u'], 'http://www.cars.ru/find/marka/Audi/TT/')
+        self.assertEqual(serp['sn'][14]['t'], u'<hlword>Купить</hlword> <hlword>Ауди</hlword> <hlword>ТТ</hlword> купе, кабриолет, родстер. Новая <hlword>Audi</hlword> <hlword>TT</hlword>...')
+        self.assertEqual(serp['sn'][14]['s'], None)
+
+        self.assertEqual(serp['sn'][49]['p'], 50)
+        self.assertEqual(serp['sn'][49]['d'], 'kupi-pricep.ru')
+        self.assertEqual(serp['sn'][49]['u'], 'http://kupi-pricep.ru/catalog/bagazhniki-dlya-audi-tt')
+        self.assertEqual(serp['sn'][49]['t'], u'Багажники для <hlword>Audi</hlword> <hlword>TT</hlword> | Каталог')
+        self.assertEqual(serp['sn'][49]['s'], u'Багажник Thule для <hlword>Audi</hlword> <hlword>TT</hlword> 3дв. Купэ 2006г. и по н.в. (аэродинамическая дуга).')
+
     def print_sn(self, res):
         for i in res['sn']:
             print

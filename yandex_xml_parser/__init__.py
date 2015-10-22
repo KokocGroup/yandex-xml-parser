@@ -113,8 +113,6 @@ class YandexXmlParser(object):
         if res:
             return res.group(1).strip()
 
-        raise SnippetsParserException()
-
     def get_error(self):
         pattern = re.compile(
             ur'<response[^>]+>\s*<error code="(\d+)">\s*(.+?)<\/error>\s*</response>',
