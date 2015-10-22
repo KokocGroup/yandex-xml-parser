@@ -87,6 +87,28 @@ class GoogleParserTestCase(YandexXmlParserTests):
         serp = y.get_serp()
         self.assertEqual(serp['error']['code'], 32)
 
+    def test7(self):
+        u""""
+            Ищем сниппеты
+        """
+        xml = self.get_data('2015-10-22.1.xml')
+        y = YandexXmlParser(xml)
+        serp = y.get_serp()
+        self.assertEqual(serp['pc'], 194953855)
+        self.assertEqual(len(serp['sn']), 50)
+
+        self.assertEqual(serp['sn'][0]['p'], 1)
+        self.assertEqual(serp['sn'][0]['d'], 'www.otdelka-trade.ru')
+        self.assertEqual(serp['sn'][0]['u'], 'http://www.otdelka-trade.ru/11-stoleshnica')
+        self.assertEqual(serp['sn'][0]['t'], u'<hlword>Столешницы</hlword> для кухни <hlword>купить</hlword> в <hlword>Москве</hlword>, выгодная цена...')
+        self.assertEqual(serp['sn'][0]['s'], u'В нашей компании, <hlword>купить</hlword> <hlword>столешницу</hlword> не составит труда.')
+
+        self.assertEqual(serp['sn'][49]['p'], 50)
+        self.assertEqual(serp['sn'][49]['d'], 'www.stoliarka.ru')
+        self.assertEqual(serp['sn'][49]['u'], 'http://www.stoliarka.ru/woodtable.html')
+        self.assertEqual(serp['sn'][49]['t'], u'<hlword>Купить</hlword> кухонную <hlword>столешницу</hlword> из дерева на заказ - <hlword>Москва</hlword>')
+        self.assertEqual(serp['sn'][49]['s'], u'Так как производство расположено в <hlword>Москве</hlword>, то <hlword>купить</hlword> у нас <hlword>столешницу</hlword> достаточно просто.')
+
     def print_sn(self, res):
         for i in res['sn']:
             print

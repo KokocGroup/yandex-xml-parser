@@ -108,6 +108,11 @@ class YandexXmlParser(object):
             descr = descr.replace('\n', ' ')
             return descr.strip()
 
+        pattern = re.compile(ur'<headline>(.*?)</headline>', re.I | re.M | re.S)
+        res = pattern.search(item)
+        if res:
+            return res.group(1).strip()
+
         raise SnippetsParserException()
 
     def get_error(self):
