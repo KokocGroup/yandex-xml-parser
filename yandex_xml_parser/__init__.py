@@ -7,7 +7,7 @@ from yandex_xml_parser.exceptions import EmptySerp, NoBodyInResponseError, BadYa
 
 __all__ = ['YandexXmlParser']
 
-YANDEX_XML_ERROR_CODE_NOT_FOUND = 18
+YANDEX_XML_ERROR_CODE_NOT_FOUND = 15
 
 
 class YandexXmlParser(object):
