@@ -137,6 +137,17 @@ class GoogleParserTestCase(YandexXmlParserTests):
         self.assertEqual(serp['sn'][49]['t'], u'Багажники для <hlword>Audi</hlword> <hlword>TT</hlword> | Каталог')
         self.assertEqual(serp['sn'][49]['s'], u'Багажник Thule для <hlword>Audi</hlword> <hlword>TT</hlword> 3дв. Купэ 2006г. и по н.в. (аэродинамическая дуга).')
 
+    def test9(self):
+        u""""
+            Ищем сниппеты
+        """
+        xml = self.get_data('2017-01-24.xml')
+        y = YandexXmlParser(xml)
+        serp = y.get_serp()
+
+        self.assertEqual(serp['pc'], 110)
+        self.assertEqual(len(serp['sn']), 0)
+
     def print_sn(self, res):
         for i in res['sn']:
             print

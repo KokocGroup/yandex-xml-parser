@@ -34,9 +34,6 @@ class YandexXmlParser(object):
         pagecount = self.get_pagecount()
         snippets = self.get_snippets()
 
-        if not snippets:
-            raise EmptySerp()
-
         return {'pc': pagecount, 'sn': snippets}
 
     def get_pagecount(self):
@@ -53,9 +50,6 @@ class YandexXmlParser(object):
         result = []
         pattern = re.compile(ur'(<group>.*?</group>)', re.I | re.M | re.S)
         items = pattern.findall(self.content)
-        if not items:
-            raise BadYandexXmlParserError()
-
         for i, item in enumerate(items):
             p = i + 1
             result.append({
