@@ -6,7 +6,7 @@ from yandex_xml_parser.tests import YandexXmlParserTests
 from yandex_xml_parser import YandexXmlParser
 
 
-class GoogleParserTestCase(YandexXmlParserTests):
+class YandexXmlParserTestCase(YandexXmlParserTests):
 
     def test1(self):
         u""""

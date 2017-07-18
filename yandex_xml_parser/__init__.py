@@ -4,20 +4,18 @@ import re
 from yandex_xml_parser.exceptions import EmptySerp, NoBodyInResponseError, BadYandexXmlParserError, BadUrlError, \
     SnippetsParserException
 
-
 __all__ = ['YandexXmlParser']
 
 YANDEX_XML_ERROR_CODE_NOT_FOUND = 15
 
 
 class YandexXmlParser(object):
-
     def __init__(self, content, snippet_fields=('d', 'p', 'u', 't', 's', 'm')):
-        self.content = content.decode('utf8')
+        self.content = content.decode('utf8') if isinstance(content, str) else content
         self.snippet_fields = snippet_fields
 
     def get_serp(self):
-        res = re.compile('<yandexsearch.*?</yandexsearch>', re.I | re.M | re. S).search(self.content)
+        res = re.compile('<yandexsearch.*?</yandexsearch>', re.I | re.M | re.S).search(self.content)
         if not res:
             raise NoBodyInResponseError()
 
