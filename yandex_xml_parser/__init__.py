@@ -107,7 +107,7 @@ class YandexXmlParser(object):
 
     def get_error(self):
         pattern = re.compile(
-            ur'<response[^>]+>\s*<error code="(\d+)">\s*(.+?)<\/error>\s*</response>',
+            ur'<response[^>]+>\s*<error code="(\d+)">\s*(.+?)<\/error>\s*',
             re.DOTALL | re.IGNORECASE | re.UNICODE | re.MULTILINE
         )
         res = pattern.search(self.content)

@@ -148,6 +148,15 @@ class YandexXmlParserTestCase(YandexXmlParserTests):
         self.assertEqual(serp['pc'], 110)
         self.assertEqual(len(serp['sn']), 0)
 
+    def test10(self):
+        u""""
+            Ищем сниппеты
+        """
+        xml = self.get_data('error55.xml')
+        y = YandexXmlParser(xml)
+        serp = y.get_serp()
+        self.assertEqual(serp['error']['code'], 55)
+
     def print_sn(self, res):
         for i in res['sn']:
             print
