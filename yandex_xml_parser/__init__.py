@@ -85,8 +85,7 @@ class YandexXmlParser(object):
         res = pattern.search(item)
         if res:
             return res.group(1).replace('\n', ' ').strip()
-
-        raise SnippetsParserException()
+        return ''
 
     def _get_descr(self, item):
         if 's' not in self.snippet_fields:

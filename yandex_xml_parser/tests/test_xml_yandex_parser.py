@@ -157,10 +157,33 @@ class YandexXmlParserTestCase(YandexXmlParserTests):
         serp = y.get_serp()
         self.assertEqual(serp['error']['code'], 55)
 
+    def test11(self):
+        u""""
+            Ищем сниппеты
+        """
+        xml = self.get_data('2017-11-29.xml')
+        y = YandexXmlParser(xml)
+        serp = y.get_serp()
+        self.assertEqual(serp['pc'], 175430642)
+        self.assertEqual(len(serp['sn']), 50)
+
+        self.assertEqual(serp['sn'][0]['p'], 1)
+        self.assertEqual(serp['sn'][0]['d'], u'devaka.ru')
+        self.assertEqual(serp['sn'][0]['u'], u'https://devaka.ru/articles/seo-beginning')
+        self.assertEqual(serp['sn'][0]['t'], u'План <hlword>раскрутки</hlword>: <hlword>С</hlword> <hlword>чего</hlword> <hlword>начать</hlword> <hlword>продвижение</hlword> <hlword>сайта</hlword>?')
+        self.assertEqual(serp['sn'][0]['s'], u'Надеюсь, теперь вы знаете <hlword>с</hlword> <hlword>чего</hlword> <hlword>начать</hlword> <hlword>продвижение</hlword> своего <hlword>сайта</hlword>!Хорошая обзорная статья из разряда “А <hlword>с</hlword> <hlword>чего</hlword> <hlword>начать</hlword> <hlword>сео</hlword>”? Хорошо, что более подробная инфа вынесена в отдельные статьи, на которые проставлены ссылки.')
+
+        self.assertEqual(serp['sn'][46]['p'], 47)
+        self.assertEqual(serp['sn'][46]['d'], 'amalbakov.ru')
+        self.assertEqual(serp['sn'][46]['u'], 'http://amalbakov.ru/poiskovoe-prodvizhenie/seo/')
+        self.assertEqual(serp['sn'][46]['t'], u'')
+        self.assertEqual(serp['sn'][46]['s'], u'Что такое <hlword>SEO</hlword> и <hlword>оптимизация</hlword> <hlword>сайта</hlword>? Совокупность действий, выполняемых с целью повышения позиций <hlword>сайта</hlword> в выдачеЕсть ли у Вас время заниматься <hlword>продвижением</hlword> <hlword>сайта</hlword>? Если есть, то необходимо изучить всю информацию и <hlword>начинать</hlword> практиковаться!')
+
     def print_sn(self, res):
         for i in res['sn']:
             print
             print i['p']
+            print i['d']
             print i['u']
             print i['t']
             print i['s']
