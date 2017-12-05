@@ -3,7 +3,7 @@ import json
 
 import unittest
 from yandex_xml_parser.tests import YandexXmlParserTests
-from yandex_xml_parser import YandexXmlParser
+from yandex_xml_parser import YandexXmlParser, NoBodyInResponseError
 
 
 class YandexXmlParserTestCase(YandexXmlParserTests):
@@ -178,6 +178,15 @@ class YandexXmlParserTestCase(YandexXmlParserTests):
         self.assertEqual(serp['sn'][46]['u'], 'http://amalbakov.ru/poiskovoe-prodvizhenie/seo/')
         self.assertEqual(serp['sn'][46]['t'], u'')
         self.assertEqual(serp['sn'][46]['s'], u'Что такое <hlword>SEO</hlword> и <hlword>оптимизация</hlword> <hlword>сайта</hlword>? Совокупность действий, выполняемых с целью повышения позиций <hlword>сайта</hlword> в выдачеЕсть ли у Вас время заниматься <hlword>продвижением</hlword> <hlword>сайта</hlword>? Если есть, то необходимо изучить всю информацию и <hlword>начинать</hlword> практиковаться!')
+
+    def test12(self):
+        u""""
+            Ищем сниппеты
+        """
+        xml = self.get_data('404.xml')
+        y = YandexXmlParser(xml)
+        with self.assertRaises(NoBodyInResponseError):
+            y.get_serp()
 
     def print_sn(self, res):
         for i in res['sn']:
